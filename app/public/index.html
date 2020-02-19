@@ -16,7 +16,8 @@
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
     ></script>
     <!-- FontAwesome -->
-    <link
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link    
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
@@ -63,17 +64,27 @@
           <button type="submit" class="btn btn-success" id= "addburger">Submit    <span  class ="fa fa-thumbs-up"></span>
         </button>
 
-        <!-- List of non devoured items -->
+        <!-- Non devoured column -->
         <div class="container">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-6" id='leftColumn'>
               <ul class="list-group burger-list">
                 <li class="list-group-item new-item">
-                  
+                  <p>undevoured goes here</p>
+                </li>                
+              </ul> 
+            </div>
+<!-- Devoured column -->
+            <div class="col-6" id='rightColumn'>
+              <ul class="list-group burger-list">
+                <li class="list-group-item new-item">
+                  <p>Devoured goes here</p>
                 </li>                
               </ul>
-            </div>
-          </div>
+            </div>          
+          </div>        
+
+          
         </div>
       </div>
     
