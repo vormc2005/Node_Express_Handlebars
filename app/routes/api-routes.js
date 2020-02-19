@@ -12,12 +12,12 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
   // GET route for getting all of the Phrases
-  app.get("/api/burgers", function(req, res) {
+  app.get("/burgers", function(req, res) {
     // findAll returns all entries for a table when used with no options
     db.burgers.findAll({}).then(function(dbBurger) {
       // We have access to the buregers in the table as an argument inside of the callback function
-      
-      res.json(dbBurger);
+      console.log(dbBurger)
+      res.render("index", {burgers:dbBurger});
     });
   });
 

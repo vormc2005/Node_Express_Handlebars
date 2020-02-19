@@ -2,24 +2,24 @@ $(document).ready(function () {
 
     var textArea = $("textarea#userinput");
     
-    var $burgerContainer = $("li.new-item");
+    // var $burgerContainer = $("li.new-item");
 
 
 
 
-    initializeRows = () => {
-        $burgerContainer.empty();
-        var rowstoAdd = [];
-        for (var i = 0; i < burgers.length; i++) {
-            rowstoAdd.push(burgers[i]);
-            // console.log(rowstoAdd)
-            console.log(burgers[i].burger_name)
-            // let newList = burgers[i].burger_name;
-            // $burgerContainer.append(newList)
-        }
+    // initializeRows = () => {
+    //     $burgerContainer.empty();
+    //     var rowstoAdd = [];
+    //     for (var i = 0; i < burgers.length; i++) {
+    //         rowstoAdd.push(burgers[i]);
+    //         // console.log(rowstoAdd)
+    //         // console.log(burgers[i].burger_name)
+    //         // let newList = burgers[i].burger_name;
+    //         // $burgerContainer.append(newList)
+    //     }
 
         
-    }
+    // }
 
     //Submit button function
 
@@ -35,9 +35,9 @@ $(document).ready(function () {
 
     /*Get burgers**//////////////////////////
     getBurgers = () => {
-        $.get("/api/burgers", function (data) {
+        $.get("/burgers", function (data) {
             burgers = data;
-            initializeRows();
+            // initializeRows();
         })
     };
     /**Insertin burger function partially working, blank values are eneterd though */
@@ -51,6 +51,26 @@ $(document).ready(function () {
         textArea.val("")
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

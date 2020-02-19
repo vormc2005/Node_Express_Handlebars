@@ -15,8 +15,8 @@ const path = require("path")
 var app = express();
 var PORT = process.env.PORT || 8060;
 
-// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// app.set("view engine", "handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 // let viewsPath = path.join(__dirname, "/app", "/views")
 // app.set('views', viewsPath);
@@ -32,10 +32,12 @@ app.use(express.static("app/public"));
 // Routes
 // =============================================================
 require("./app/routes/api-routes.js")(app);
-// require("./app/routes/html-routes.js")(app);
+require("./app/routes/html-routes.js")(app);
 
 // Starts the server to begin listening
 // =============================================================
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("Listening on port %s", PORT);
+  });
 });
