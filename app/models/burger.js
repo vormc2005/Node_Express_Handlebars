@@ -15,7 +15,13 @@ module.exports = function(sequelize, DataTypes){
         burgers.create({
             burger_name: "Big Mac",
             devoured: false
+        }),
+        burgers.create({
+            burger_name: "Chicken burger",
+            devoured: false
         })
-    })
+    });
+
+    // burgers.sync();
     return burgers;
 };
