@@ -52,9 +52,32 @@ $(document).ready(function () {
 
     }
 
+   
+ /**function to update devour burger */
+
+ updateBurger =(burger)=>{
+     console.log(burger)
+     $.ajax({
+         method: "PUT",
+         url: "/api/burgers",
+         data:burger
+         
+     }).then(getBurgers);
+ }
 
 
+$("button#devourbtn").on("click", function(e){
+    console.log("devour clicked")
+     e.preventDefault();
+     var burger = $(this); 
+     var burgerData = {
+         burger_name: burger.attr("data-name"),
+         devoured: burger.attr("data-devour")
+     }    
 
+    //  burger.devoured = !burger.devoured;
+     updateBurger(burgerData)
+ })
 
 
 

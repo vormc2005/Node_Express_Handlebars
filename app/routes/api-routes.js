@@ -14,7 +14,9 @@ module.exports = function(app) {
   // GET route for getting all of the Phrases
   app.get("/burgers", function(req, res) {
     // findAll returns all entries for a table when used with no options
-    db.burgers.findAll({}).then(function(dbBurger) {
+    db.burgers.findAll({
+      
+    }).then(function(dbBurger) {
       // We have access to the buregers in the table as an argument inside of the callback function
       console.log(dbBurger)
       res.render("index", {burgers:dbBurger});
@@ -38,10 +40,25 @@ module.exports = function(app) {
     });
   });
 
-//   // DELETE route for deleting burgers. We can get the id of the phrase we want to delete from
-//   // req.params.id//Tere is no function of deleting in this application at this point //
-//   app.delete("/:id", function(req, res) {});
+ /**update route, we may need it to switch to devour true */
 
-//   // PUT route for updating flights. We can get the updated phrase from req.body
-//   app.put("/", function(req, res) {});
+ app.put("/api/burgers", function (req,res){
+console.log(req);
+  db.burger.update({
+    burger_name:req.body.burger_name,
+    devoured: !req.body.devoured
+  },
+  {
+    where: {
+      id: req.body.id
+    }
+  }).then(function(dbBurger){
+    res.json(dbBurger)
+  })
+  .catch(function(err){
+    res.json(err);
+  })
+})
+
+
 };

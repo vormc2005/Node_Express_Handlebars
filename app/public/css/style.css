@@ -57,3 +57,8 @@ button#addburger{
  #rightColumn{
     padding: 20px;
  }
+ button#devourbtn{
+     float: right;
+     margin-right: auto;
+     
+ }

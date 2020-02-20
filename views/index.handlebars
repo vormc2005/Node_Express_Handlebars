@@ -68,17 +68,31 @@
             <div class="container">
                 <div class="row">
                     <div class="col-6" id='leftColumn'>
-                    
+                     <ul class="list-group burger-list">
+                         {{#each burgers}}
+                            <li class="list-group-item not_eaten">
+                               
+                        {{dataValues.burger_name}}                                    
+                            <button class='complete btn btn-primary' id="devourbtn" data-devour={{dataValues.devoured}} data-name={{dataValues.burger_name}}>Devour</button>       
+                            
+                            </li>
+                             {{/each}}
+                        </ul>
                         
-                            {{burgers.dataValues.burger_name}}
-
                     </div>
                     <!-- Devoured column -->
                     <div class="col-6" id='rightColumn'>
                         <ul class="list-group burger-list">
+                             {{#each devoured}}
                             <li class="list-group-item new-item">
-                                <p>Devoured goes here</p>
+                               
+                       
+                                    
+                                   
+                            
                             </li>
+                             {{/each}}
+                        </ul>
                         </ul>
                     </div>
                 </div>
