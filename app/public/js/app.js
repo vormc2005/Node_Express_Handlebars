@@ -1,120 +1,50 @@
 $(document).ready(function () {
 
-    var textArea = $("textarea#userinput");
-    
-    // var $burgerContainer = $("li.new-item");
-
-
-
-
-    // initializeRows = () => {
-    //     $burgerContainer.empty();
-    //     var rowstoAdd = [];
-    //     for (var i = 0; i < burgers.length; i++) {
-    //         rowstoAdd.push(burgers[i]);
-    //         // console.log(rowstoAdd)
-    //         // console.log(burgers[i].burger_name)
-    //         // let newList = burgers[i].burger_name;
-    //         // $burgerContainer.append(newList)
-    //     }
-
-        
-    // }
-
     //Submit button function
 
-    $("button#addburger").on("click", function () {
-
+    $("button#addburger").on("click", function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
         console.log("Submit clicked");
-        insertBurger();
-        getBurgers();
+        var textArea = $("textarea#userinput");
 
+        if (textArea.val()===null){
+            console.log("Type burger you would like to eat");
+            return;
+        }
 
-    })
-
-
-    /*Get burgers**//////////////////////////
-    getBurgers = () => {
-        $.get("/burgers", function (data) {
-            burgers = data;
-            // initializeRows();
-        })
-    };
-    /**Insertin burger function partially working, blank values are eneterd though */
-    function insertBurger() {
-        let burger = {
+        const burger = {
             burger_name: textArea.val().trim(),
-            devoured: false
+            devoured: false,
+            noteaten: true
         };
 
-        $.post("/api/burgers", burger, getBurgers)
-        textArea.val("")
+        $.post("/api/burgers", burger, function(){
+            textArea.val("");
+            location.reload();
+        });
 
-    }
+    });
 
-   
- /**function to update devour burger */
 
- updateBurger =(burger)=>{
-     console.log(burger)
-     $.ajax({
-         method: "PUT",
-         url: "/api/burgers",
-         data:burger
-         
-     }).then(getBurgers);
- }
 
 
 $("button#devourbtn").on("click", function(e){
-    console.log("devour clicked")
-     e.preventDefault();
-     var burger = $(this); 
-     var burgerData = {
-         burger_name: burger.attr("data-name"),
-         devoured: burger.attr("data-devour")
-     }    
-
-    //  burger.devoured = !burger.devoured;
-     updateBurger(burgerData)
+    e.preventDefault();
+    var burger = $(this);
+    var id = burger.attr("data-burger-id");   
+    console.log(id);
+    $.ajax({
+        method: "PUT",
+        url: `/api/burgers/${id}`        
+    }).then(function(resp){
+        console.log(resp);
+        if(resp.success === true ){
+            location.reload();
+        }  
+    });
  })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /***************************************************** */
-    // function getBurgers() {
-    //     $.get("/api/burgers", function(data) {
-    //       todos = data;
-    //       initializeRows();
-    //     });
-    //   }
-
-
-    // insertBurger =(event)=>{
-    // event.preventDefault();
-    // let burger = {
-    //     burger_name: $textArea.val().trim(),
-    //     devoured: false
-    // };
-    // $.post("/api/burgers", burger, getBurgers)
-    //     $textArea.val("")
-    // }
 
 })

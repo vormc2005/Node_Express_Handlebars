@@ -13,7 +13,7 @@ const path = require("path")
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 8060;
+var PORT = process.env.PORT || 8080;
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -32,7 +32,7 @@ app.use(express.static("app/public"));
 // Routes
 // =============================================================
 require("./app/routes/api-routes.js")(app);
-require("./app/routes/html-routes.js")(app);
+// require("./app/routes/html-routes.js")(app);
 
 // Starts the server to begin listening
 // =============================================================

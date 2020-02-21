@@ -61,7 +61,7 @@
 
             <textarea class="form-control" id="userinput" rows="3" cols="30"></textarea>
 
-            <button type="submit" class="btn btn-success" id="addburger">Submit <span class="fa fa-thumbs-up"></span>
+            <button type="button" class="btn btn-success" id="addburger">Submit <span class="fa fa-thumbs-up"></span>
             </button>
 
             <!-- Non devoured column -->
@@ -69,30 +69,23 @@
                 <div class="row">
                     <div class="col-6" id='leftColumn'>
                      <ul class="list-group burger-list">
-                         {{#each burgers}}
+                         {{#each burgers.noteaten}}
                             <li class="list-group-item not_eaten">
-                               
-                        {{dataValues.burger_name}}                                    
-                            <button class='complete btn btn-primary' id="devourbtn" data-devour={{dataValues.devoured}} data-name={{dataValues.burger_name}}>Devour</button>       
-                            
+                              {{this.burger_name}}                                    
+                              <button class='complete btn btn-primary' id="devourbtn" data-devour={{this.devoured}} data-burger-id={{this.id}}>Devour</button>       
                             </li>
-                             {{/each}}
-                        </ul>
+                        {{/each}}
+                      </ul>
                         
                     </div>
                     <!-- Devoured column -->
                     <div class="col-6" id='rightColumn'>
                         <ul class="list-group burger-list">
-                             {{#each devoured}}
-                            <li class="list-group-item new-item">
-                               
-                       
-                                    
-                                   
-                            
-                            </li>
-                             {{/each}}
-                        </ul>
+                           {{#each burgers.devoured}}
+                              <li class="list-group-item not_eaten">
+                                {{this.burger_name}}                                    
+                              </li>
+                          {{/each}}
                         </ul>
                     </div>
                 </div>
