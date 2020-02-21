@@ -3,4 +3,4 @@ This burger app lets you add burgers of your choice to the menu on the left side
 Once user is ready to eat chosen burgers, he or she can type devour and that will move chosen burgers to the right.
 This application works dynamically utilizing MySql database of burgers. Whenever user inputs new burger it gets pushed to a Sql table. 
 
-![](Mysql)
+![](Mysql.gif)
